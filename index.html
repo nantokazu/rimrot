@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ドメイン生成ツール</title>
+</head>
+<body>
+    <h2>ドメイン生成ツール</h2>
+    <input type="text" id="inputName" placeholder="文字列を入力">
+    <button onclick="generateDomain()">生成</button>
+    <p id="result"></p>
+
+    <script>
+        function makeDomain(name) {
+            let normalized = name.toLowerCase();
+            normalized = normalized.replace(/[^a-z0-9-]/g, "");
+            return `https://${normalized}.com`;
+        }
+
+        function generateDomain() {
+            const input = document.getElementById("inputName").value;
+            const domainUrl = makeDomain(input);
+            document.getElementById("result").textContent = "生成されたドメインURL: " + domainUrl;
+        }
+    </script>
+</body>
+</html>
